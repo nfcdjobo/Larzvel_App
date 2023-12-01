@@ -12,14 +12,10 @@
             <header class="header">
               <div class="container flex-between">
                 <div class="logo">
-                  <a href="#">
-                    <img src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/logo.svg" alt="" />
-                  </a>
+                  El-Coche
                 </div>
                 <nav class="main-navgation flex-between flex-ver-top">
                   <div class="nav-links">
-                    <a href="#features">Features</a>
-                    <a href="#pricing">Pricing</a>
                     <a href="#resources">Resources</a>
                   </div>
                   <div class="nav-buttons">
@@ -40,7 +36,7 @@
                   Build your brand’s recognition and get detailed insights on how your
                   links are performing.
                 </p>
-                <a href="#url-shorten-form" class="btn btn-lg">Get Started</a>
+                <a href="{{ route('login')}}" class="btn btn-lg">Commencer</a>
               </div>
               <div class="landing-image">
                 <img src="https://raw.githubusercontent.com/MohamedAridah/frontendmentor_url-shortening-api/main/images/illustration-working.svg" alt="Working Illustration" />
@@ -112,15 +108,7 @@
                 </div>
               </div>
             </section>
-            <!-- Pricing -->
-            <section class="pricing" id="pricing">
-              <div class="container">
-                <div class="section-header">
-                  <h2>Boost your links today</h2>
-                  <a href="#" class="btn btn-lg">Get Started</a>
-                </div>
-              </div>
-            </section>
+            
             <!-- Footer -->
             <footer class="footer" id="resources">
               <div class="container">
