@@ -5,6 +5,22 @@
   box-sizing: border-box;
 }
 
+:root {
+    --blue: #2a2185;
+    --blueFlue: #1795ce;
+    --white: #fff;
+    --black1: #222;
+    --black2: #999;
+    --black3: rgba(0, 0, 0, 0.08);
+    --black4: rgba(0, 0, 0, 0.1);
+    --red: #f00;
+    --orange: #e9b10a;
+    --green: #8de02c;
+    --success: #03792a;
+    --success2: #03b63f;
+    --error: #fc3e61;
+  }
+
 html {
   scroll-behavior: smooth;
   font-size: 16px;
@@ -40,8 +56,8 @@ img {
 
 .btn {
   display: inline-block;
-  color: white;
-  background-color: #2acfcf;
+  color: var(--white);
+  background-color: var(--blue);
   text-transform: capitalize;
   font-weight: 700;
   border: none;
@@ -71,7 +87,9 @@ img {
 }
 
 .btn:hover {
-  background-color: #6be1e1;
+  background-color: var(--white);
+  color: var(--blue);
+  border: 1px solid var(--blue);
 }
 
 .flex-between {
@@ -143,8 +161,9 @@ img {
   padding: 45px 0;
 }
 
-.header .logo img {
-  height: 30px;
+.header .logo {
+  font-size: 2rem;
+  font-weight: bolder;
 }
 
 .header .main-navgation {
@@ -210,7 +229,7 @@ img {
 }
 
 .header .main-navgation div:first-child {
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--white);
 }
 
 .header .nav-buttons .btn {
@@ -251,7 +270,7 @@ img {
 @media (max-width: 992px) {
   .main-navgation a {
     width: 100%;
-    color: white;
+    color: var(--white);
     text-align: center;
     font-size: 16px;
   }
@@ -423,7 +442,7 @@ img {
   font-family: "Poppins", sans-serif, "Segoe UI", Tahoma, Geneva, Verdana;
   font-size: 18px;
   padding: 8px 20px;
-  background: white;
+  background: var(--white);
   border: 2px solid transparent;
   border-radius: 6px;
   outline: none;
@@ -502,7 +521,7 @@ img {
   gap: 15px;
   flex-wrap: wrap;
   padding: 15px 25px;
-  background: white;
+  background: var(--white);
   border-radius: 6px;
   margin-bottom: 15.15152px;
 }
@@ -602,7 +621,7 @@ img {
   width: 35px;
   background: #f46262;
   border: none;
-  color: white;
+  color: var(--white);
   font-size: 18px;
   transition: 0.2s;
 }
@@ -642,7 +661,7 @@ img {
 
 .more-features-content .feature {
   position: relative;
-  background: white;
+  background: var(--white);
   border-radius: 6px;
 }
 
@@ -775,7 +794,7 @@ img {
 }
 
 .pricing h2 {
-  color: white;
+  color: var(--white);
   margin-bottom: 20px;
 }
 
@@ -830,7 +849,7 @@ img {
 }
 
 .footer .links-group span {
-  color: white;
+  color: var(--white);
   font-weight: 700;
 }
 

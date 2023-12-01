@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>El-Coche | Login and Register</title>
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 </head>
 <body>
@@ -18,8 +18,8 @@
                     @endforeach
                 </ul>
             </div>
-        @else
-            <div class="alert alert-success">Compte crée avec succès !</div>
+        {{-- @elseif ($success->any())
+            <div class="alert alert-success">Compte crée avec succès !</div> --}}
         @endif
         <div class="form">
           <form class="register-form" method="POST" action={{route('create.user')}} enctype="multipart/form-data">
@@ -27,11 +27,9 @@
             <input type="text" name='fullname' placeholder="Nom et Prénom(s)" required/>
             <input type="email" name='email' placeholder="Adresse E-mail" required/>
             <input type="text" name='phone' placeholder="Téléphone"/>
-            <input type="file" name='photo' placeholder="Photo"/>
             <input type="password" name='password' placeholder="Mot de passe" required/>
             <input type="password" name='password_confirmation' placeholder="Confirmer mot de passe" required/>
-            {{-- <label for="remember"></label> --}}
-            {{-- <input type="checkbox" name='remember' value="yes"/> --}}
+            
              <label for="remember"><input type="checkbox" name='remember' value="yes"/> Se Souvenir de moi </label>
 
             <button>Créer</button>

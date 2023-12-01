@@ -67,22 +67,17 @@ class MemberController extends Controller{
         return view('findMember', ['member' => $id]);
     }
 
-    public function update(Request $request,Member $id){
-        // dd($id );
+    public function update(Request $request, Member $id){
+        
         $validated =  $request->validate([
             'fullname' => ['required', 'string','between: 3, 100'],
             'email' => ['required', 'email'],
             'phone' => ['required', 'string'],
             'description' => ['required', 'string']
         ]);
-
-        dd($validated);
-       
-        $member = Member::find($id);
         
-        $newMember = new Member($validated);
-        if($validated && $member){
-            $newMember->save();
+        if($validated && $id){
+            $id->update($validated);
             return redirect()->route('MemberController.gitById', $id)->with('success', 'Mise à jour effectuée avec succès !');
         }else{
             return redirect()->route('MemberController.gitById', $id)->withErreur($validated)->withInput();

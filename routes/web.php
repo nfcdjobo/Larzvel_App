@@ -28,7 +28,6 @@ Route::get('/register', [RegisterController::class, 'register'])->name('register
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 
-
 Route::get('/home', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/listingcar', [CarController::class, 'index'])->name('CardController.index');

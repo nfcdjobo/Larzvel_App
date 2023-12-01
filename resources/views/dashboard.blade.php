@@ -6,11 +6,17 @@
     <div class="card">
         <a href="">
             <div>
-                <div class="numbers">1</div>
+                <div class="numbers">
+                    @if (isset($members))
+                        {{ count(array_slice($members, 0, 3))}}
+                    @else
+                    Aucun
+                    @endif
+                </div>
                 <div class="cardName">Parents</div>
             </div>
             <div class="iconBx">
-                <ion-icon name="search-outline"></ion-icon>
+                <ion-icon name="person-outline"></ion-icon>
             </div>
         </a>
     </div>
@@ -18,11 +24,17 @@
     <div class="card">
         <a href="">
             <div>
-                <div class="numbers">2</div>
+                <div class="numbers">
+                    @if (isset($cars))
+                        {{ count($cars)}}
+                    @else
+                        Aucun
+                    @endif
+                </div>
                 <div class="cardName">Total Vehicule</div>
             </div>
             <div class="iconBx">
-                <ion-icon name="search-outline"></ion-icon>
+                <ion-icon name="car-outline"></ion-icon>
             </div>
         </a>
     </div>
@@ -30,7 +42,13 @@
     <div class="card">
         <a href="">
         <div>
-            <div class="numbers">2</div>
+            <div class="numbers">
+                @if (isset($cars))
+                    {{ count($cars)}}
+                @else
+                    Aucun
+                @endif
+            </div>
             <div class="cardName">Vehicules Libre</div>
         </div>
         <div class="iconBx">
@@ -69,24 +87,25 @@
                     <td>Marque</td>
                     <td>Matricule</td>
                     <td>Couleur</td>
-                    <td>Image</td>
                     <td>Occupé</td>
                 </tr>
             </thead>
 
             <tbody class="tbody">
-                <tr key={index}>
-                    <td><input type="checkbox"  name="" class="input-checkbox" id={index}/></td>
-                    <td>{item.name}</td>
-                    <td>{item.canal}</td>
-                    <td></td>
-                    <td> </td>
-                    <td></td>
-                    <td class="action-bttns">
-                        <button class="edite" id={item._id}><a href=''><ion-icon name="create-outline"></ion-icon></a></button>
-                        <button class="delete" id={item._id}><ion-icon name="trash-outline"></ion-icon></button>
-                    </td>
-                </tr>
+                @if (isset($cars))
+                    @foreach ($cars as $item)
+                        <tr key={{ $item->id }}>
+                            <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
+                            <td>{{ $item->marque }}</td>
+                            <td>{{ $item->matricule }}</td>
+                            <td>{{ $item->couleur }}</td>
+                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
+                @endif
+                
             </tbody>
         </table>
     </div> 
@@ -111,18 +130,19 @@
             </thead>
 
             <tbody class="tbody">
-                <tr key={index}>
-                    <td><input type="checkbox"  name="" class="input-checkbox" id={index}/></td>
-                    <td>{item.name}</td>
-                    <td>{item.canal}</td>
-                    <td></td>
-                    <td> </td>
-                    <td></td>
-                    <td class="action-bttns">
-                        <button class="edite" id={item._id}><a href=''><ion-icon name="create-outline"></ion-icon></a></button>
-                        <button class="delete" id={item._id}><ion-icon name="trash-outline"></ion-icon></button>
-                    </td>
-                </tr>
+                @if (isset($cars))
+                    @foreach ($cars as $item)
+                        <tr key={{ $item->id }}>
+                            <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
+                            <td>{{ $item->marque }}</td>
+                            <td>{{ $item->matricule }}</td>
+                            <td>{{ $item->couleur }}</td>
+                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
+                @endif
             </tbody>
         </table>
     </div> 
@@ -147,18 +167,19 @@
             </thead>
 
             <tbody class="tbody">
-                <tr key={index}>
-                    <td><input type="checkbox"  name="" class="input-checkbox" id={index}/></td>
-                    <td>{item.name}</td>
-                    <td>{item.canal}</td>
-                    <td></td>
-                    <td> </td>
-                    <td></td>
-                    <td class="action-bttns">
-                        <button class="edite" id={item._id}><a href=''><ion-icon name="create-outline"></ion-icon></a></button>
-                        <button class="delete" id={item._id}><ion-icon name="trash-outline"></ion-icon></button>
-                    </td>
-                </tr>
+                @if (isset($cars))
+                    @foreach ($cars as $item)
+                        <tr key={{ $item->id }}>
+                            <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
+                            <td>{{ $item->marque }}</td>
+                            <td>{{ $item->matricule }}</td>
+                            <td>{{ $item->couleur }}</td>
+                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
+                @endif
             </tbody>
         </table>
     </div> 
@@ -178,23 +199,23 @@
                     <td>Matricule</td>
                     <td>Couleur</td>
                     <td>Image</td>
-                    <td>Occupé</td>
                 </tr>
             </thead>
 
             <tbody class="tbody">
-                <tr key={index}>
-                    <td><input type="checkbox"  name="" class="input-checkbox" id={index}/></td>
-                    <td>{item.name}</td>
-                    <td>{item.canal}</td>
-                    <td></td>
-                    <td> </td>
-                    <td></td>
-                    <td class="action-bttns">
-                        <button class="edite" id={item._id}><a href=''><ion-icon name="create-outline"></ion-icon></a></button>
-                        <button class="delete" id={item._id}><ion-icon name="trash-outline"></ion-icon></button>
-                    </td>
-                </tr>
+                @if (isset($cars))
+                    @foreach ($cars as $item)
+                        <tr key={{ $item->id }}>
+                            <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
+                            <td>{{ $item->marque }}</td>
+                            <td>{{ $item->matricule }}</td>
+                            <td>{{ $item->couleur }}</td>
+                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
+                @endif
             </tbody>
         </table>
     </div> 

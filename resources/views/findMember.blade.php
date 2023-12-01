@@ -26,7 +26,7 @@
                 <h1>Modifier les informations du parent: <span style="border: 1px solid var(--blue); padding: 5px; border-radius: 5px; box-shadow: 0 7px 25px var(--black3); font-size: 20px">{{$member->fullname}}</span></h1>
             </div>
             <div class="content-form">
-                <form class="forms"  id="form-contact" method="POST" action={{route('MemberController.update')}}>
+                <form class="forms"  id="form-contact" method="POST" action={{route('MemberController.update', $member->id)}}>
                     {{-- @method('PUT') --}}
                     @csrf
                     <div class="group-input">

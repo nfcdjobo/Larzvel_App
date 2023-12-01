@@ -1,4 +1,24 @@
-@import url(https://fonts.googleapis.com/css?family=Roboto:300);
+/* @import url(https://fonts.googleapis.com/css?family=Roboto:300); */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap");
+
+:root {
+    --blue: #2a2185;
+    --blueFlue: #1795ce;
+    --white: #fff;
+    --black1: #222;
+    --black2: #999;
+    --black3: rgba(0, 0, 0, 0.08);
+    --black4: rgba(0, 0, 0, 0.1);
+    --red: #f00;
+    --orange: #e9b10a;
+    --green: #8de02c;
+    --success: #03792a;
+    --success2: #03b63f;
+    --error: #fc3e61;
+  }
+
+  
+
 
 .login-page {
   width: 360px;
@@ -8,7 +28,7 @@
 .form {
   position: relative;
   z-index: 1;
-  background: #FFFFFF;
+  background: var(--white);
   max-width: 360px;
   margin: 0 auto 100px;
   padding: 45px;
@@ -18,34 +38,40 @@
 .form input {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #f2f2f2;
+  background:  var(--white);
   width: 100%;
   border: 0;
   margin: 0 0 15px;
   padding: 15px;
   box-sizing: border-box;
   font-size: 14px;
+  border: 1px solid var(--black2);
 }
 .form button {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
-  background: #4CAF50;
+  background: var(--blue);
   width: 100%;
   border: 0;
   padding: 15px;
-  color: #FFFFFF;
+  color: var(--white);
   font-size: 14px;
   -webkit-transition: all 0.3 ease;
   transition: all 0.3 ease;
   cursor: pointer;
+  margin-top: 1rem;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: #43A047;
+  background: var(--white);
+  border: 1px solid var(--blue);
+  color: var(--blue);
+  font-weight: bolder;
+
 }
 .form .message {
   margin: 15px 0 0;
-  color: #b3b3b3;
+  color: var(--black2);
   font-size: 12px;
 }
 .form .message a {
@@ -89,10 +115,13 @@
   color: #EF3B3A;
 }
 body {
-  background: #76b852; /* fallback for old browsers */
-  background: rgb(141,194,111);
-  background: linear-gradient(90deg, rgba(141,194,111,1) 0%, rgba(118,184,82,1) 50%);
+  background: var(--black2);
+  background: linear-gradient(90deg, var(--black2) 0%, var(--blue) 0%);
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.logo{
+    font-size: 2rem;
 }
