@@ -38,3 +38,5 @@ Route::post('/creatingMember', [MemberController::class, 'create'])->name('Membe
 Route::get('/editeMember/{id}', [MemberController::class, 'findById'])->name('MemberController.gitById');
 Route::post('/updateMember/{id}', [MemberController::class, 'update'])->name('MemberController.update');
 
+Route::delete('/deleteMember/{id}', [MemberController::class, 'delete'])->name('MemberController.delete');
+

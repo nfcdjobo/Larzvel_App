@@ -75,7 +75,7 @@ class MemberController extends Controller{
             'phone' => ['required', 'string'],
             'description' => ['required', 'string']
         ]);
-        
+
         if($validated && $id){
             $id->update($validated);
             return redirect()->route('MemberController.gitById', $id)->with('success', 'Mise à jour effectuée avec succès !');
@@ -98,7 +98,11 @@ class MemberController extends Controller{
         
     }
 
-    public function delete(){
+    public function delete(Member $id){
+        if($id){
+            $id->delete();
+            return redirect()->route('MemberController.index')->with('delete', 'Supression effectué avec succès');
+        }
         
     }
 }

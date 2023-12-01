@@ -35,8 +35,14 @@
                                 <td><img src="{{ $item->photo }}"/></td>
                                 
                                 <td class="action-bttns">
-                                    <button class="edite" id='{{ $item->id }}'><a href={{route('MemberController.gitById', $item->id)}}><ion-icon name="create-outline"></ion-icon></a></button>
-                                    <button class="delete" id={{ $item->id }}><ion-icon name="trash-outline"></ion-icon></button>
+                                    <button class="edite" id='{{ $item->id }}'><a href={{route('MemberController.gitById', $item->id)}} ><ion-icon name="create-outline"></ion-icon></a></button>
+
+                                    <button class="delete" id='{{ $item->id }}' onclick="if(confirm('Êtes-vous vraiment sûre de vouloir supprimer {{$item->fullname}} ?')) document.querySelector('form.delete-form-{{$item->id}}').submit()"><ion-icon name="trash-outline"></ion-icon></button>
+                                    
+                                    <form class="delete-form-{{ $item->id }}" action="{{route('MemberController.delete', $item->id)}}" method="POST" style="display: none;">
+                                        @csrf
+                                        @method('DELETE')
+                                    </form>
                                 </td>
                             </tr>
                             
