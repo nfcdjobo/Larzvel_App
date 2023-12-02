@@ -4,10 +4,8 @@ namespace App\Http\Controllers;
 use App\Models\User; // Importation du modèle User
 use App\Models\Car; // Importation du modèle Car
 use App\Models\Member;
-
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\Auth;
 
 class CarController extends Controller
@@ -62,21 +60,14 @@ class CarController extends Controller
 
     }
 
-
     public function findById(Car $id){
         $user = auth::user();
         $members = $user->members()->get();
-
         return view('findCar', ['car' => $id, 'member' => $members]);
     }
 
 
-    public function findByMatricule(){
-
-    }
-
     public function update(Request $request, Car $id){
-
         $genererChaineAleatoire = function($longueur) {
             $caracteres = '0123456789abcdefghijklmnopqrstuvwxyz';
             $chaineAleatoire = '';
