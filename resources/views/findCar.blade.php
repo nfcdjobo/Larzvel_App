@@ -20,6 +20,27 @@
             </div>
         </div>
     </div>
+    <div class="details-edite">
+        <div class="recentOrders-info">
+            <div class="-info">
+                <div class="cardHeader">
+                    <h1>Images du Véhicule</h1>
+                </div>
+
+
+                <div class="title-date">
+                    @if (count(json_decode($car->image)))
+                        <div class="title-date-img">
+                            @foreach (json_decode($car->image) as $content)
+                                <div class="info-img"><img src="{{ asset('images/'.$content)}}" alt="alt"></div>
+                            @endforeach
+                        </div>
+                    @endif
+
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="details-edite" id="details-message">
         <div class="recentOrders">
             <div class="cardHeader">
