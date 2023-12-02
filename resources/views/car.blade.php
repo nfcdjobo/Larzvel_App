@@ -8,7 +8,6 @@
         <div class="recentOrders">
             <div class="cardHeader">
                 <h2>Liste de Véhicules</h2>
-                <a href="" class="btn">Ajouter nouvel Véhicule</a>
             </div>
             <table>
                 <thead>

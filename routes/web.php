@@ -32,6 +32,7 @@ Route::post('/login', [LoginController::class, 'authent']);
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
 Route::get('/profile', [DashboardController::class, 'profile'])->name('DashboardController.profile');
 Route::post('/deconnexion', [DashboardController::class, 'deconnexion'])->name('DashboardController.deconnexion');
+Route::post('/updateProfile', [DashboardController::class, 'update'])->name('DashboardController.update');
 
 Route::get('/listingcar', [CarController::class, 'index'])->name('CarController.index');
 Route::post('/creatingcar', [CarController::class, 'create'])->name('CarController.create');

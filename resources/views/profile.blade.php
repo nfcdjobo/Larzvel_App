@@ -14,7 +14,7 @@
                     <div class="info"><span class="label">Adresse E-mail </span>: <span>{{ $user->email }}</span></div>
                     <div class="info"><span class="label">Adresse Téléphonqie </span>: <span>{{ $user->phone }}</span></div>
 
-                    <div class="info"><span class="label">Mot de passe </span>: <span class='closing'>nfcdjobo</span>  <button class="btnpass" onclick="document.querySelector('.closing').classList.toggle('show-password');if(event.target.textContent==='Voir'){ event.target.textContent='Cacher'}else{event.target.textContent='Voir'}">Voir</button></div>
+                    {{-- <div class="info"><span class="label">Mot de passe </span>: <span class='closing'>nfcdjobo</span>  <button class="btnpass" onclick="document.querySelector('.closing').classList.toggle('show-password');if(event.target.textContent==='Voir'){ event.target.textContent='Cacher'}else{event.target.textContent='Voir'}">Voir</button></div> --}}
 
                 </div>
             </div>
@@ -28,7 +28,7 @@
                 <h1>Modifier Profile</h1>
             </div>
             <div class="content-form">
-                <form class="forms"  id="form-contact" action="" method="POST">
+                <form class="forms"  id="form-contact"  method="POST" action="{{route('DashboardController.update') }}">
                     @csrf
                     <div class="group-input">
                         <label htmlFor="fullname" class="label-form">Nom et Prénom(s)</label>
@@ -47,7 +47,7 @@
 
                     <div class="group-input">
                         <label htmlFor="password_confirmation" class="label-form">Répéter mot de passe</label>
-                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation"  placeholder="Adresse téléphonque"  required />
+                        <input type="password" class="form-control" name="password_confirmation" id="password_confirmation"  placeholder="Répéter mot de passe"  />
                     </div>
 
                     <div class="group-action">

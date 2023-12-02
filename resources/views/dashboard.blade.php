@@ -52,7 +52,7 @@
             <div class="cardName">Vehicules Libre</div>
         </div>
         <div class="iconBx">
-            <ion-icon name="search-outline"></ion-icon>
+            <ion-icon name="barbell-outline"></ion-icon>
         </div>
         </a>
     </div>
@@ -70,13 +70,10 @@
             <div class="cardName">Vehicules Occupées</div>
         </div>
         <div class="iconBx">
-            <ion-icon name="chatbubbles-outline"></ion-icon>
+            <ion-icon name="color-filter-outline"></ion-icon>
         </div>
         </a>
     </div>
-
-
-
 
 </div>
 

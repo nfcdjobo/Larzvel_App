@@ -66,7 +66,7 @@ class CarController extends Controller
     public function findById(Car $id){
         $user = auth::user();
         $members = $user->members()->get();
-        // dd($members);
+
         return view('findCar', ['car' => $id, 'member' => $members]);
     }
 
@@ -93,13 +93,17 @@ class CarController extends Controller
             'couleur' => ['required', 'string']
         ]);
 
+        $images = [];
+
         if ($request->hasFile('image')) {
+
             foreach ($request->file('image') as $image) {
                 $filename = preg_replace('/\s+/', '', time() .$genererChaineAleatoire(30). '.' . $image->extension());
                 $image->move('images', $filename, 'public');
                 // Enregistrez le chemin de l'image dans la base de données
                 $images[] = $filename;
             }
+
             $validated['image'] = json_encode($images);
         }
 

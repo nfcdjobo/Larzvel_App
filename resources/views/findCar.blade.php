@@ -27,7 +27,6 @@
             </div>
             <div class="content-form">
                 <form class="forms"  id="form-contact" enctype="multipart/form-data" method="POST" action={{route('CarController.update', $car->id)}}>
-                    {{-- @method('PUT') --}}
                     @csrf
                     <div class="group-input">
                         <label htmlFor="marque" class="label-form">Nom et Prénom(s)</label>
@@ -49,7 +48,7 @@
                     {{-- @dd($member); --}}
                     <div class="group-input">
                         <label htmlFor="image" class="label-form">Changer les images</label>
-                        <input type="file" class="form-control" name="image" id="image" multiple/>
+                        <input type="file" class="form-control" name="image[]" id="image" multiple/>
                     </div>
 
                     <div class="group-input">
@@ -72,7 +71,7 @@
                 </form>
             </div>
         </div>
-        
+
     </div>
 
     @endsection

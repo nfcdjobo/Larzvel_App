@@ -10,6 +10,8 @@ use App\Models\User; // Importation du modèle User
 use App\Models\Car; // Importation du modèle Car
 use App\Models\Member; // Importation du modèle Member
 
+use Illuminate\Support\Facades\Hash;
+
 class DashboardController extends Controller
 {
 
@@ -23,6 +25,28 @@ class DashboardController extends Controller
     }
 
     public function profile(){
+        return view('profile', ['user' => Auth::user()]);
+    }
+
+    public function update(Request $request){
+        $user = Auth::user();
+        $validated =  $request->validate([
+            'fullname' => ['required', 'string','between: 3,100'],
+            'phone' => ['required', 'string'],
+        ]);
+
+        if($request->password){
+            $request->validate([
+                'password' => ['required', 'string', 'min:4', 'confirmed']
+            ]);
+            $validated['password'] = Hash::make($request->password);
+        }
+
+        // dd($validated);
+        $isUpdated = $user->update($validated);
+
+        if($isUpdated) Auth::login($user);
+
         return view('profile', ['user' => Auth::user()]);
     }
 
