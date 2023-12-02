@@ -15,12 +15,14 @@ class Car extends Model
 
     protected $fillable  = [ 'marque', 'matricule', 'image', 'couleur', 'user_id', 'member_id' ];
 
-    public function user()
+    
+
+    public function users()
     {
         return $this->belongsTo(User::class);
     }
 
-    public function member()
+    public function members()
     {
         return $this->belongsTo(Member::class);
     }

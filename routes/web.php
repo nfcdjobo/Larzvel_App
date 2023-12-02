@@ -27,10 +27,18 @@ Route::post('/createUser', [UserController::class, 'create'])->name('create.user
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 
 Route::get('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/login', [LoginController::class, 'authent']);
 
-Route::get('/home', [DashboardController::class, 'index'])->name('home');
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('home');
 
 Route::get('/listingcar', [CarController::class, 'index'])->name('CardController.index');
+Route::post('/creatingcar', [CarController::class, 'create'])->name('CardController.create');
+
+Route::get('/editeCar/{id}', [CarController::class, 'findById'])->name('CarController.gitById');
+Route::post('/updateCar/{id}', [CarController::class, 'update'])->name('CarController.update');
+Route::delete('/deleteCar/{id}', [CarController::class, 'delete'])->name('CarController.delete');
+
+
 
 Route::get('/listingMember', [MemberController::class, 'index'])->name('MemberController.index');
 Route::post('/creatingMember', [MemberController::class, 'create'])->name('MemberController.create');

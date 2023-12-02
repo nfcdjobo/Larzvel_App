@@ -976,4 +976,6 @@ div.card[active='active'] ion-icon{
 }
 
 
-
+td img.car-image{
+    width: 50px;
+}

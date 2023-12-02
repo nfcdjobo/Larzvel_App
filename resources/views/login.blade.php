@@ -25,20 +25,41 @@
           <form class="register-form" method="POST" action={{route('create.user')}} enctype="multipart/form-data">
             @csrf
             <input type="text" name='fullname' placeholder="Nom et Prénom(s)" required/>
+            @error('fullname')
+                {{$message}}
+            @enderror
             <input type="email" name='email' placeholder="Adresse E-mail" required/>
+            @error('email')
+                {{$message}}
+            @enderror
             <input type="text" name='phone' placeholder="Téléphone"/>
+            @error('phone')
+                {{$message}}
+            @enderror
             <input type="password" name='password' placeholder="Mot de passe" required/>
+            @error('password')
+                {{$message}}
+            @enderror
             <input type="password" name='password_confirmation' placeholder="Confirmer mot de passe" required/>
+            @error('password_confirmation')
+                {{$message}}
+            @enderror
             
              <label for="remember"><input type="checkbox" name='remember' value="yes"/> Se Souvenir de moi </label>
 
             <button>Créer</button>
             <p class="message">J'ai déjà un compte ? <a href="#">me connecter</a></p>
           </form>
-          <form class="login-form" method="POST">
+          <form class="login-form" method="POST" action="{{ route('login') }}">
             @csrf
             <input type="email" name='email' placeholder="Adresse E-mail" required/>
+            @error('email')
+                {{$message}}
+            @enderror
             <input type="password" name='password' placeholder="Mot de passe" required/>
+            @error('password')
+                {{$message}}
+            @enderror
             <button>Connexion</button>
             <p class="message">Je n'ai pas, me compte ? <a href="#">S'inscrire</a></p>
           </form>

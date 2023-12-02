@@ -82,13 +82,6 @@ class MemberController extends Controller{
         }else{
             return redirect()->route('MemberController.gitById', $id)->withErreur($validated)->withInput();
         }
-
-        
-
-        
-        
-
-
         
 
         if (!$member) redirect()->route('MemberController.update')->with('error', 'Mise à jour nous effectuée')->withInput();
