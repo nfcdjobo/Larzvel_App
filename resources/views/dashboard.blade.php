@@ -6,12 +6,11 @@
     <div class="card">
         <a href="">
             <div>
-
                 <div class="numbers">
                     @if (isset($user->members))
                         {{ count($user->members)}}
                     @else
-                    Aucun
+                        Aucun
                     @endif
                 </div>
                 <div class="cardName">Parents</div>
@@ -81,70 +80,33 @@
 
 </div>
 
+
+
 <div class="details-edite">
     <div class="recentOrders">
         <div class="cardHeader">
-            <h2>Véhicules recents</h2>
-            <a href="./corporates/contact.html" class="btn">Voir Plus</a>
+            <h2>Parents recents</h2>
+            <a href="{{ route('MemberController.index') }}" class="btn">Voir liste des parentd</a>
         </div>
         <table>
             <thead>
                 <tr>
                     <td><input type="checkbox" class="all" name="all" id="all"/></td>
-                    <td>Marque</td>
-                    <td>Matricule</td>
-                    <td>Couleur</td>
-                    <td>Occupé</td>
+                    <td>Nom et Prénom(s)</td>
+                    <td>E-mail</td>
+                    <td>Téléphone</td>
+
                 </tr>
             </thead>
 
             <tbody class="tbody">
-                @if (isset($cars))
-                    @foreach ($cars as $item)
+                @if (isset($user->members))
+                    @foreach ($user->members->take(3) as $item)
                         <tr key={{ $item->id }}>
                             <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
-                            <td>{{ $item->marque }}</td>
-                            <td>{{ $item->matricule }}</td>
-                            <td>{{ $item->couleur }}</td>
-                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
-                        </tr>
-                    @endforeach
-                @else
-                    <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
-                @endif
-
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="details-edite">
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Véhicules non Occupés</h2>
-            <a href="./corporates/contact.html" class="btn">Voir Plus</a>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <td><input type="checkbox" class="all" name="all" id="all"/></td>
-                    <td>Marque</td>
-                    <td>Matricule</td>
-                    <td>Couleur</td>
-                    <td>Image</td>
-                    <td>Occupé</td>
-                </tr>
-            </thead>
-
-            <tbody class="tbody">
-                @if (isset($cars))
-                    @foreach ($cars as $item)
-                        <tr key={{ $item->id }}>
-                            <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
-                            <td>{{ $item->marque }}</td>
-                            <td>{{ $item->matricule }}</td>
-                            <td>{{ $item->couleur }}</td>
-                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
+                            <td>{{ $item->fullname }}</td>
+                            <td>{{ $item->email }}</td>
+                            <td>{{ $item->phone }}</td>
                         </tr>
                     @endforeach
                 @else
@@ -158,8 +120,8 @@
 <div class="details-edite">
     <div class="recentOrders">
         <div class="cardHeader">
-            <h2>Véhicules Occupés</h2>
-            <a href="./corporates/contact.html" class="btn">Voir Plus</a>
+            <h2>Véhicules Recenment Occupés </h2>
+            <a href="{{ route('CarController.index') }}" class="btn">Voir liste des véhicles</a>
         </div>
         <table>
             <thead>
@@ -169,55 +131,20 @@
                     <td>Matricule</td>
                     <td>Couleur</td>
                     <td>Image</td>
-                    <td>Occupé</td>
+                    <td>Occupé Par</td>
                 </tr>
             </thead>
 
             <tbody class="tbody">
-                @if (isset($cars))
-                    @foreach ($cars as $item)
+                @if (isset($user->cars))
+                    @foreach ($user->cars->where('member_id', '!=' ,null)->take(3) as $item)
                         <tr key={{ $item->id }}>
                             <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
                             <td>{{ $item->marque }}</td>
                             <td>{{ $item->matricule }}</td>
                             <td>{{ $item->couleur }}</td>
-                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
-                        </tr>
-                    @endforeach
-                @else
-                    <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
-                @endif
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="details-edite">
-    <div class="recentOrders">
-        <div class="cardHeader">
-            <h2>Véhicules recents</h2>
-            <a href="./corporates/contact.html" class="btn">Voir Plus</a>
-        </div>
-        <table>
-            <thead>
-                <tr>
-                    <td><input type="checkbox" class="all" name="all" id="all"/></td>
-                    <td>Marque</td>
-                    <td>Matricule</td>
-                    <td>Couleur</td>
-                    <td>Image</td>
-                </tr>
-            </thead>
-
-            <tbody class="tbody">
-                @if (isset($cars))
-                    @foreach ($cars as $item)
-                        <tr key={{ $item->id }}>
-                            <td><input type="checkbox"  name="" class="input-checkbox" id={{ $item->id }}/></td>
-                            <td>{{ $item->marque }}</td>
-                            <td>{{ $item->matricule }}</td>
-                            <td>{{ $item->couleur }}</td>
-                            <td>{{ $item->member ? 'Yes' : 'No' }}</td>
+                            <td><img class="car-image" src="{{ asset('images/'.json_decode($item->image)[0])}}" alt=""></td>
+                            <td>{{ optional($item->member)->fullname }}</td>
                         </tr>
                     @endforeach
                 @else

@@ -7,8 +7,7 @@
     <div class="details-edite">
         <div class="recentOrders">
             <div class="cardHeader">
-                <h2>Véhicules recents</h2>
-                <a href="" class="btn">Ajouter un parent</a>
+                <h2>Parents</h2>
             </div>
             <table>
                 <thead>

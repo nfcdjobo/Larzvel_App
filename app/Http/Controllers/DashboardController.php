@@ -23,7 +23,7 @@ class DashboardController extends Controller
     }
 
     public function profile(){
-        return view('profile');
+        return view('profile', ['user' => Auth::user()]);
     }
 
     public function deconnexion(Request $request)

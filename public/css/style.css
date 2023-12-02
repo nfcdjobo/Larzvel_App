@@ -978,3 +978,15 @@ div.card[active='active'] ion-icon{
 td img.car-image{
     width: 50px;
 }
+
+.closing{display: none;}
+
+.btnpass{
+    padding: 3px 7px;
+}
+
+
+.show-password{
+    display: inline-block;
+    position: relative;
+}
