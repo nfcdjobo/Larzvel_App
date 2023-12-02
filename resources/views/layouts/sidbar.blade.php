@@ -26,7 +26,7 @@
             <li class="{{strstr($pathname, mb_strtolower('Member', 'UTF-8')) ? 'hovered' : ''}}">
                 <a href="{{ route('MemberController.index') }}">
                     <span class="icon">
-                        <ion-icon name="logo-apple"></ion-icon>
+                        <ion-icon name="person-add-outline"></ion-icon>
                     </span>
                     <span class="title">Ma famille</span>
                 </a>
@@ -34,7 +34,7 @@
             <li class="{{strstr($pathname, mb_strtolower('car', 'UTF-8')) ? 'hovered' : ''}}">
                 <a href="{{route('CarController.index')}}">
                     <span class="icon">
-                        <ion-icon name="chatbubbles-outline"></ion-icon>
+                        <ion-icon name="car-sport-outline"></ion-icon>
                     </span>
                     <span class="title">Vehicules</span>
                 </a>
@@ -43,7 +43,7 @@
             <li class="{{strstr($pathname, mb_strtolower('profile', 'UTF-8')) ? 'hovered' : ''}}">
                 <a href="{{route('DashboardController.profile')}}">
                     <span class="icon">
-                        <ion-icon name="logo-buffer"></ion-icon>
+                        <ion-icon name="person-circle-outline"></ion-icon>
                     </span>
                     <span class="title">Profile</span>
                 </a>
