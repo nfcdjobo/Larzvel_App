@@ -2,14 +2,12 @@
     @extends('layouts.main')
     @section('content')
     {{-- @dd($car->user_id) --}}
-
-
     
     <div class="details-edite">
         <div class="recentOrders-info">
             <div class="-info">
                 <div class="cardHeader">
-                    <h1>Apperçu Globale de Contact</h1>
+                    <h1>Apperçu du véhicule</h1>
                 </div>
                 <div class="title-date">
                     <div class="info"><span class="label">Marque  </span>: <span>{{$car->marque}}</span></div>
@@ -18,14 +16,12 @@
                     <div class="info"><span class="label">Attribué à </span>: <span>{{$car->member_id ? $car->members()->fullname : 'Aucun'}}</span></div>
                 </div>
             </div>
-            
         </div>
-        
     </div>
     <div class="details-edite" id="details-message">
         <div class="recentOrders">
             <div class="cardHeader">
-                <h1>Modifier les informations du parent: <span style="border: 1px solid var(--blue); padding: 5px; border-radius: 5px; box-shadow: 0 7px 25px var(--black3); font-size: 20px">{{$car->fullname}}</span></h1>
+                <h1>Modifier Le propriétés de lu véhicule: <span style="border: 1px solid var(--blue); padding: 5px; border-radius: 5px; box-shadow: 0 7px 25px var(--black3); font-size: 20px">{{$car->fullname}}</span></h1>
             </div>
             <div class="content-form">
                 <form class="forms"  id="form-contact" method="POST" action={{route('CarController.update', $car->id)}}>
