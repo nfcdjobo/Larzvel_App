@@ -990,3 +990,23 @@ td img.car-image{
     display: inline-block;
     position: relative;
 }
+
+
+.title-date{
+    padding-top: 1rem;
+}
+
+.title-date .info{
+    padding: 10px 0 ;
+}
+
+.title-date .info .label{
+    color: var(--black2);
+    font-weight: 500;
+}
+
+.title-date .info span:nth-child(2){
+    color: var(--blue);
+    font-weight: bolder;
+    font-size: 1.4rem;
+}

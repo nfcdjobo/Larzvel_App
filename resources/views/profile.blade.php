@@ -13,9 +13,6 @@
                     <div class="info"><span class="label">Nom & Prénom  </span>: <span>{{ $user->fullname }}</span></div>
                     <div class="info"><span class="label">Adresse E-mail </span>: <span>{{ $user->email }}</span></div>
                     <div class="info"><span class="label">Adresse Téléphonqie </span>: <span>{{ $user->phone }}</span></div>
-
-                    {{-- <div class="info"><span class="label">Mot de passe </span>: <span class='closing'>nfcdjobo</span>  <button class="btnpass" onclick="document.querySelector('.closing').classList.toggle('show-password');if(event.target.textContent==='Voir'){ event.target.textContent='Cacher'}else{event.target.textContent='Voir'}">Voir</button></div> --}}
-
                 </div>
             </div>
 
