@@ -18,11 +18,11 @@ class AdminController extends Controller
     }
 
     public function index(){
-        // On récupère l'utilisateur actuellement connecté sur la facade Auth
-        $loggerUser = auth()->user();
-        // On récupère les véhicule qui lui sont propre (associés à user)
-        $cars = $loggerUser->cars;
-        dd($cars);
+        // // On récupère l'utilisateur actuellement connecté sur la facade Auth
+        // $loggerUser = auth()->user();
+        // // On récupère les véhicule qui lui sont propre (associés à user)
+        // $cars = $loggerUser->cars;
+        // dd($cars);
 
 
         return view('index');

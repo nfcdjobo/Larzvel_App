@@ -32,7 +32,7 @@
                 </a>
             </li>
             <li class="{{strstr($pathname, mb_strtolower('car', 'UTF-8')) ? 'hovered' : ''}}">
-                <a href="{{route('CardController.index')}}">
+                <a href="{{route('CarController.index')}}">
                     <span class="icon">
                         <ion-icon name="chatbubbles-outline"></ion-icon>
                     </span>
@@ -40,33 +40,12 @@
                 </a>
             </li>
 
-            
-            
-            
-            <li class="{{strstr($pathname, mb_strtolower('dashboard', 'UTF-8')) ? 'hovered' : ''}}">
-                <a href="/historiques">
+            <li class="{{strstr($pathname, mb_strtolower('profile', 'UTF-8')) ? 'hovered' : ''}}">
+                <a href="{{route('DashboardController.profile')}}">
                     <span class="icon">
                         <ion-icon name="logo-buffer"></ion-icon>
                     </span>
-                    <span class="title">Historique</span>
-                </a>
-            </li>
-            
-            <li class="{{strstr($pathname, mb_strtolower('dashboard', 'UTF-8')) ? 'hovered' : ''}}">
-                <a href="/parametres/collaborateur">
-                    <span class="icon">
-                        <ion-icon name="cog-outline"></ion-icon>
-                    </span>
-                    <span class="title">Paramètres</span>
-                </a>
-            </li>
-
-            <li class="{{strstr($pathname, mb_strtolower('dashboard', 'UTF-8')) ? 'hovered' : ''}}">
-                <a href="/corbelle">
-                    <span class="icon">
-                        <ion-icon name="trash-outline"></ion-icon>
-                    </span>
-                    <span class="title">Corbelle</span>
+                    <span class="title">Profile</span>
                 </a>
             </li>
         </ul>

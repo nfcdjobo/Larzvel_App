@@ -11,6 +11,9 @@
     </div>
 
     <div class="user">
-        <img src={user} alt="User"/>
+        <button onclick="if(confirm('Voullez-vous fermer la session ?')){document.querySelector('.deconnexion').submit()}">Déconnxion</button>
     </div>
+    <form class="deconnexion" action="{{route('DashboardController.deconnexion')}}" method="POST" style="display: none;">
+        @csrf
+    </form>
 </div>

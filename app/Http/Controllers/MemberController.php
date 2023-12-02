@@ -50,8 +50,14 @@ class MemberController extends Controller{
 
             $user = Auth::user();
 
+            $validated['user_id'] = $user->id;
+
+
+
             $newUser = new Member($validated);
+
             $newUser->user()->associate($user);
+            // dd($validated, $newUser, $newUser);
             $newMember = $newUser->save();
         }
         return redirect()->route('MemberController.index')->withErrors($validated)->withInput();

@@ -1,8 +1,8 @@
 {{-- <ererrere> --}}
- 
+
     @extends('layouts.main')
     @section('content')
-  
+
     {{-- @dd($members) --}}
     <div class="details-edite">
         <div class="recentOrders">
@@ -21,7 +21,7 @@
                         <td>Photo</td>
                     </tr>
                 </thead>
-    
+
                 <tbody class="tbody">
                     @if(count($members))
                         @foreach ($members as $item)
@@ -30,32 +30,32 @@
                                 <td>{{ $item->fullname}}</td>
                                 <td>{{ $item->email}}</td>
                                 <td>{{ $item->phone}}</td>
-                                
+
                                 <td>{{ $item->description }}</td>
                                 <td><img src="{{ $item->photo }}"/></td>
-                                
+
                                 <td class="action-bttns">
                                     <button class="edite" id='{{ $item->id }}'><a href={{route('MemberController.gitById', $item->id)}} ><ion-icon name="create-outline"></ion-icon></a></button>
 
                                     <button class="delete" id='{{ $item->id }}' onclick="if(confirm('Êtes-vous vraiment sûre de vouloir supprimer {{$item->fullname}} ?')) document.querySelector('form.delete-form-{{$item->id}}').submit()"><ion-icon name="trash-outline"></ion-icon></button>
-                                    
+
                                     <form class="delete-form-{{ $item->id }}" action="{{route('MemberController.delete', $item->id)}}" method="POST" style="display: none;">
                                         @csrf
                                         @method('DELETE')
                                     </form>
                                 </td>
                             </tr>
-                            
+
                         @endforeach
                     @else
                         <tr key={index}><td colspan="7" style="text-align: center">Aucun véhicule disponible, veuillez dont ajouter.</td></tr>
                     @endif
-                    
+
                 </tbody>
             </table>
 
             {{ $members->links() }}
-        </div> 
+        </div>
     </div>
 
     <div class="details-edite" id="details-message">
@@ -70,8 +70,8 @@
                         <label htmlFor="fullname" class="label-form">Nom et Prénom(s)</label>
                         <input type="text" class="form-control" name="fullname" id="fullname" placeholder="fullname"  required/>
                     </div>
-                    
-    
+
+
                     <div class="group-input">
                         <label htmlFor="email" class="label-form">Adresse E-mail</label>
                         <input type="email" class="form-control" name="email" id="email" placeholder="email"  required />
@@ -85,15 +85,15 @@
                     <div class="group-input">
                         <label htmlFor="description" class="label-form">Description du parent</label>
                         <select name="description" class="form-control" id="description" required>
-                            <option value="" disabled>-- Veuillez sélectionnez un parent --</option>
+                            <option value="" selected disabled>-- Veuillez sélectionnez un parent --</option>
                             <option value="conjoint(e)"> Conjoint(s) </option>
                             <option value="fils/fille"> Mon fils / ma fille </option>
                             <option value="frère/soeur"> Frère / Soeur </option>
-                            <option value="peère/mère"> Mon père / ma mère </option>
+                            <option value="père/mère"> Mon père / ma mère </option>
                             <option value="oncle/autre"> Oncle ou autre  </option>
                         </select>
                     </div>
-    
+
                     <div class="group-action">
                         <button type="reset" id="reset-contact"> Annuler</button>
                         <button type="submit" id="submit-contact"> Confirmer</button>
@@ -104,4 +104,3 @@
     </div>
 
     @endsection
-    

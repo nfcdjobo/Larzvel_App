@@ -58,7 +58,7 @@ class CarController extends Controller
         $newCar->user()->associate($user);
         $saveCar = $newCar->save();
 
-        return redirect()->route('CardController.index')->withErrors($validated)->withInput();
+        return redirect()->route('CarController.index')->withErrors($validated)->withInput();
 
     }
 
@@ -96,15 +96,11 @@ class CarController extends Controller
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
                 $filename = preg_replace('/\s+/', '', time() .$genererChaineAleatoire(30). '.' . $image->extension());
-
                 $image->move('images', $filename, 'public');
-
                 // Enregistrez le chemin de l'image dans la base de données
                 $images[] = $filename;
             }
-
             $validated['image'] = json_encode($images);
-
         }
 
         if($request->member_id) $validated['member_id'] = $request->member_id;
@@ -120,7 +116,10 @@ class CarController extends Controller
 
     }
 
-    public function delete(){
-
+    public function delete(Car $id){
+        if($id){
+            $id->delete();
+            return redirect()->route('CarController.index')->with('delete', 'Supression effectué avec succès');
+        }
     }
 }
