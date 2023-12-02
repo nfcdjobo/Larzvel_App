@@ -6,9 +6,10 @@
     <div class="card">
         <a href="">
             <div>
+
                 <div class="numbers">
-                    @if (isset($members))
-                        {{ count(array_slice($members, 0, 3))}}
+                    @if (isset($user->members))
+                        {{ count($user->members)}}
                     @else
                     Aucun
                     @endif
@@ -25,8 +26,8 @@
         <a href="">
             <div>
                 <div class="numbers">
-                    @if (isset($cars))
-                        {{ count($cars)}}
+                    @if (isset($user->cars))
+                        {{ count($user->cars)}}
                     @else
                         Aucun
                     @endif
@@ -43,8 +44,8 @@
         <a href="">
         <div>
             <div class="numbers">
-                @if (isset($cars))
-                    {{ count($cars)}}
+                @if (isset($user->cars))
+                    {{ count($user->cars->where('member_id', null))}}
                 @else
                     Aucun
                 @endif
@@ -60,7 +61,13 @@
     <div class="card">
         <a href="">
         <div>
-            <div class="numbers">0</div>
+            <div class="numbers">
+                @if (isset($user->cars))
+                    {{ count($user->cars->where('member_id', '!=' ,null))}}
+                @else
+                    Aucun
+                @endif
+            </div>
             <div class="cardName">Vehicules Occupées</div>
         </div>
         <div class="iconBx">
@@ -69,9 +76,9 @@
         </a>
     </div>
 
-    
 
-    
+
+
 </div>
 
 <div class="details-edite">
@@ -105,10 +112,10 @@
                 @else
                     <tr><td colspan="5" style="text-align: center">Aucun véhicule disponible</td></tr>
                 @endif
-                
+
             </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 
 <div class="details-edite">
@@ -145,7 +152,7 @@
                 @endif
             </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 
 <div class="details-edite">
@@ -182,7 +189,7 @@
                 @endif
             </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 
 <div class="details-edite">
@@ -218,7 +225,7 @@
                 @endif
             </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 
 
