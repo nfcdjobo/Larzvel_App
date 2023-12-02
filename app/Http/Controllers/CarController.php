@@ -24,10 +24,6 @@ class CarController extends Controller
     }
 
     public function create(Request $request){
-
-
-
-
         $validated =  $request->validate([
             'marque' => ['required', 'string','between: 3, 50'],
             'matricule' => ['required', 'string','between: 3, 50'],
@@ -45,7 +41,57 @@ class CarController extends Controller
             return $chaineAleatoire;
         };
 
+        if ($request->hasFile('image')) {
+            foreach ($request->file('image') as $image) {
+                $filename = preg_replace('/\s+/', '', time() .$genererChaineAleatoire(30). '.' . $image->extension());
 
+                $image->move('images', $filename, 'public');
+
+                // Enregistrez le chemin de l'image dans la base de données
+                $images[] = $filename;
+            }
+            $validated['image'] = json_encode($images);
+        }
+
+        $user = Auth::user();
+        $newCar = new Car($validated);
+        $newCar->user()->associate($user);
+        $saveCar = $newCar->save();
+
+        return redirect()->route('CardController.index')->withErrors($validated)->withInput();
+
+    }
+
+
+    public function findById(Car $id){
+        $user = auth::user();
+        $members = $user->members()->get();
+        // dd($members);
+        return view('findCar', ['car' => $id, 'member' => $members]);
+    }
+
+
+    public function findByMatricule(){
+
+    }
+
+    public function update(Request $request, Car $id){
+
+        $genererChaineAleatoire = function($longueur) {
+            $caracteres = '0123456789abcdefghijklmnopqrstuvwxyz';
+            $chaineAleatoire = '';
+            for ($i = 0; $i < $longueur; $i++) {
+                $indexAleatoire = rand(0, strlen($caracteres) - 1);
+                $chaineAleatoire .= $caracteres[$indexAleatoire];
+            }
+            return $chaineAleatoire;
+        };
+
+        $validated =  $request->validate([
+            'marque' => ['required', 'string','between: 3, 50'],
+            'matricule' => ['required', 'string','between: 3, 50'],
+            'couleur' => ['required', 'string']
+        ]);
 
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
@@ -56,46 +102,25 @@ class CarController extends Controller
                 // Enregistrez le chemin de l'image dans la base de données
                 $images[] = $filename;
             }
-            // dd($images);
+
+            $validated['image'] = json_encode($images);
 
         }
 
-        // $request->image = json_encode($images);
-        $validated['image'] = json_encode($images);
-        // $validated[] = []
+        if($request->member_id) $validated['member_id'] = $request->member_id;
 
-        $user = Auth::user();
+        if($validated && $id){
+            $id->update($validated);
+            return redirect()->route('CarController.gitById', $id)->with('success', 'Mise à jour effectuée avec succès !');
+        }else{
+            return redirect()->route('CarController.gitById', $id)->withErreur($validated)->withInput();
+        }
 
-        $newCar = new Car($validated);
-        $newCar->user()->associate($user);
-        $saveCar = $newCar->save();
 
-        return redirect()->route('CardController.index')->withErrors($validated)->withInput();
-        
-    }
 
-    public function findAll(){
-        // return view('')
-    }
-
-    public function findById(Car $id){
-        return view('findCar', ['car' => $id]);
-    }
-
-    // public function findById(Car $id){
-    //     $car = Car::find($id);
-    //     return view('findCar', ['car' => $car]);
-    // }
-
-    public function findByMatricule(){
-        
-    }
-
-    public function update(){
-        
     }
 
     public function delete(){
-        
+
     }
 }

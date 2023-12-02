@@ -15,16 +15,16 @@ class MemberController extends Controller{
     public function __construct(){
         $this->middleware('auth');
     }
-    
+
 
     public function index(){
-        
+
         $members = Member::where('user_id', Auth::id())->paginate(6);
         return view('member', ['members' => $members]);
     }
 
     public function create(Request $request){
-        
+
         $validated =  $request->validate([
             'fullname' => ['required', 'string','between: 3, 100'],
             'email' => ['required', 'email', 'unique:members'],
@@ -33,7 +33,7 @@ class MemberController extends Controller{
         ]);
 
 
-        
+
         if($validated){
             if($request->file('photo')){
                 // Obtenez le protocole utilisé par la requête (http ou https)
@@ -59,7 +59,7 @@ class MemberController extends Controller{
     }
 
     public function find(){
-        
+
     }
 
     public function findById(Member $id){
@@ -68,7 +68,7 @@ class MemberController extends Controller{
     }
 
     public function update(Request $request, Member $id){
-        
+
         $validated =  $request->validate([
             'fullname' => ['required', 'string','between: 3, 100'],
             'email' => ['required', 'email'],
@@ -82,13 +82,13 @@ class MemberController extends Controller{
         }else{
             return redirect()->route('MemberController.gitById', $id)->withErreur($validated)->withInput();
         }
-        
 
-        if (!$member) redirect()->route('MemberController.update')->with('error', 'Mise à jour nous effectuée')->withInput();
-        
-        $member->update($validated);
-        return redirect()->route('MemberController.update')->withErrors($validated)->withInput();
-        
+
+        // if (!$member) redirect()->route('MemberController.update')->with('error', 'Mise à jour nous effectuée')->withInput();
+
+        // $member->update($validated);
+        // return redirect()->route('MemberController.update')->withErrors($validated)->withInput();
+
     }
 
     public function delete(Member $id){
@@ -96,6 +96,6 @@ class MemberController extends Controller{
             $id->delete();
             return redirect()->route('MemberController.index')->with('delete', 'Supression effectué avec succès');
         }
-        
+
     }
 }
