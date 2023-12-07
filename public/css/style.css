@@ -943,7 +943,7 @@ div.card[active='active'] ion-icon{
   border-radius: 5px;
   border: 1px solid var(--blue);
   color: var(--blue);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .action-bttns button:nth-child(1){
@@ -958,6 +958,11 @@ div.card[active='active'] ion-icon{
   border: 1px solid var(--error);
   color: var(--error);
   font-weight: bolder;
+}
+
+.action-bttns button.edite a{
+    width: 100px;
+    cursor: pointer;
 }
 
 .details .recentOrders table tbody tr:hover .action-bttns button:nth-child(1){
@@ -1026,3 +1031,9 @@ td img.car-image{
     width: 200px;
     height: 150px;
 }
+
+.title-date-img .info-img img{
+    width: 100%;
+}
+
+
